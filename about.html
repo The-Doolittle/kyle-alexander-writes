@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Kyle Alexander</title>
+<meta name="description" content="Kyle Alexander is a children's author from northwestern Pennsylvania, writing stories full of hope, light, and imagination.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">Kyle <span>Alexander</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="kingdom-of-dreams.html">Kingdom of Dreams</a>
+      <a href="starlight-children.html">Starlight Children</a>
+      <a href="about.html" class="active">About</a>
+      <a href="newsletter.html">Newsletter</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:90px;">
+  <canvas id="hero-sky" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-inner">
+      <p class="eyebrow">About</p>
+      <h1>The story <em>behind</em> the story.</h1>
+      <p class="lede">Kyle Alexander writes from northwestern Pennsylvania — building worlds meant to be read aloud, argued over, and remembered.</p>
+    </div>
+  </div>
+</header>
+
+<section class="section-parchment">
+  <div class="wrap" style="max-width:70ch;">
+    <p class="reveal">I'm Kyle Alexander, and I love to write. I'm from northwestern Pennsylvania, and I write books that are full of hope, light, and imagination — the kind of stories that hold up whether you're eight or eighty. When I'm not writing, I'm usually spending time with my wife and son, or working away at whatever comes next in the cracks of time I can find.</p>
+
+    <p class="pull-quote reveal">"In the summer of 2016, my brother came up with a premise for a story. Falling in love with the idea, I devoted my time to writing it. In early 2020, he, unfortunately, passed away. I finished the book to prove that I could, and as a love letter to him."</p>
+
+    <p class="reveal">That book became Kingdom of Dreams — my first independently published novel, co-credited to my brother Alexander, who dreamed it up in the first place. Finishing it was never really a question. It was the only way I knew to keep going, and to keep him in it.</p>
+  </div>
+</section>
+
+<section class="section-dark">
+  <div class="wrap" style="max-width:70ch;">
+    <p class="eyebrow reveal" style="margin-bottom:40px;">A rough timeline</p>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <p class="eyebrow">2016</p>
+        <h3>An idea, from my brother</h3>
+        <p>The premise for what would become Kingdom of Dreams started as a story my brother came up with. I fell in love with it and started writing.</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <p class="eyebrow">2020</p>
+        <h3>A reason to finish it</h3>
+        <p>My brother passed away in early 2020. Finishing the book stopped being a someday project and became something I needed to do — to prove I could, and for him.</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <p class="eyebrow">2023</p>
+        <h3>Kingdom of Dreams, published</h3>
+        <p>My first independently published book went out into the world, co-credited to my brother Alexander, the way it always should have been.</p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <p class="eyebrow">2026</p>
+        <h3>Starlight Children</h3>
+        <p>The first book in a new series, Starlight Children Adventures, is on its way — a bigger world, and hopefully just as much heart.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="newsletter-band">
+  <div class="wrap">
+    <div>
+      <h2>Want to follow along?</h2>
+      <p>Join the newsletter for updates on Starlight Children and what comes after.</p>
+    </div>
+    <a href="newsletter.html" class="btn btn-primary">Join the newsletter</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand">Kyle <span>Alexander</span></div>
+      <p style="max-width:32ch; font-size:14px;">Stories full of hope, light, and imagination — for everyone who still believes in dream worlds.</p>
+    </div>
+    <div class="footer-links">
+      <a href="kingdom-of-dreams.html">Kingdom of Dreams</a>
+      <a href="starlight-children.html">Starlight Children</a>
+      <a href="about.html">About</a>
+      <a href="newsletter.html">Newsletter</a>
+    </div>
+  </div>
+  <div class="wrap footer-fine">© <span id="year"></span> Kyle Alexander. All rights reserved.</div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="script.js"></script>
+</body>
+</html>
