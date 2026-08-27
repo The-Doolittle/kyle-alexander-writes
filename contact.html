@@ -8,21 +8,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/kyle-small.webp" type="image/webp">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="newsletter-page">
 
 <nav class="site-nav">
   <div class="wrap">
-    <a href="index.html" class="brand">Kyle <span>Alexander</span></a>
+    <a href="/" class="brand">Kyle <span>Alexander</span></a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#books">My Books</a>
-      <a href="index.html#story">My Story</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="/">Home</a>
+      <a href="/#books">My Books</a>
+      <a href="/#story">My Story</a>
+      <a href="/contact" class="active">Contact</a>
     </div>
   </div>
 </nav>
@@ -40,9 +41,14 @@
 
 <section class="section-parchment" style="padding-top:0;">
   <div class="wrap">
-    <form class="form-card reveal" data-newsletter-form>
+    <form class="form-card reveal" data-newsletter-form action="https://formsubmit.co/kyle@kylealexanderwrites.com" method="POST">
       <h3 style="margin-bottom:6px;">Join the list</h3>
       <p style="color:var(--ink-soft); margin-bottom:28px; font-size:14px;">Takes about ten seconds. No, faster than that.</p>
+
+      <input type="hidden" name="_subject" value="New newsletter signup — kylealexanderwrites.com">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="field">
         <label for="name">First name</label>
@@ -55,23 +61,25 @@
       </div>
 
       <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Subscribe</button>
-      <p class="form-note">This is a demo form — nothing is sent or stored yet.</p>
+      <p class="form-note" data-form-note>Submissions go straight to Kyle's inbox.</p>
 
       <div class="form-success" data-form-success>
         <span>✦</span>
         <div>
           <strong>You're on the list.</strong>
-          <p style="margin:4px 0 0; font-size:13px;">(Not really — this form isn't wired up yet. It's a placeholder for the real signup.)</p>
+          <p style="margin:4px 0 0; font-size:13px;" data-form-success-detail>Thanks for signing up — Kyle will be in touch.</p>
         </div>
       </div>
 
       <div class="embed-note">
-        DEV NOTE — replace this form with an embed code from your mailing
-        list provider (Mailchimp, ConvertKit, Buttondown, etc.) before
-        publishing. Since this is a static site on GitHub Pages, an
-        embedded signup form is the easiest way to actually collect
-        addresses. Could also add a plain "email me" link/address here
-        for people who'd rather just reach out directly.
+        DEV NOTE — this form submits via FormSubmit.co to
+        kyle@kylealexanderwrites.com, no backend needed. The very first
+        submission triggers a one-time confirmation email from FormSubmit
+        to that inbox (check spam) — click the link in it to activate,
+        and every submission after that lands straight in the inbox. If
+        you'd rather use a real mailing list tool (Mailchimp,
+        ConvertKit, Buttondown, etc.) down the line, swap this form for
+        their embed code instead.
       </div>
     </form>
   </div>
@@ -84,9 +92,9 @@
       <p style="max-width:32ch; font-size:14px;">Stories full of hope, light, and imagination — for everyone who still believes in dream worlds.</p>
     </div>
     <div class="footer-links">
-      <a href="index.html#books">My Books</a>
-      <a href="index.html#story">My Story</a>
-      <a href="contact.html">Contact</a>
+      <a href="/#books">My Books</a>
+      <a href="/#story">My Story</a>
+      <a href="/contact">Contact</a>
     </div>
   </div>
   <div class="wrap footer-fine">© <span id="year"></span> Kyle Alexander. All rights reserved.</div>

@@ -228,19 +228,40 @@ document.addEventListener("DOMContentLoaded", () => {
     resetAuto();
   }
 
-  /* ---------- dummy newsletter form ---------- */
+  /* ---------- newsletter form → FormSubmit.co ---------- */
   const form = document.querySelector("[data-newsletter-form]");
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
+      const submitBtn = form.querySelector("button[type='submit']");
       const success = document.querySelector("[data-form-success]");
-      const emailField = form.querySelector("input[type='email']");
-      if (success) {
-        success.querySelector("strong").textContent = "You're on the list.";
-        success.classList.add("show");
-      }
-      form.reset();
-      if (emailField) emailField.blur();
+      const note = document.querySelector("[data-form-note]");
+      const originalLabel = submitBtn.textContent;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Request failed");
+          if (success) success.classList.add("show");
+          form.reset();
+        })
+        .catch(() => {
+          if (note) {
+            note.textContent =
+              "Something went wrong sending that — try again, or email kyle@kylealexanderwrites.com directly.";
+          }
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        });
     });
   }
 });
