@@ -231,6 +231,14 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- newsletter form → FormSubmit.co ---------- */
   const form = document.querySelector("[data-newsletter-form]");
   if (form) {
+    // FormSubmit only allows cross-origin JS requests (fetch/XHR) through
+    // its dedicated /ajax/ endpoint — the plain form action is for normal
+    // browser form submissions (full page load) only.
+    const ajaxAction = form.action.replace(
+      "formsubmit.co/",
+      "formsubmit.co/ajax/"
+    );
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -242,20 +250,34 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.disabled = true;
       submitBtn.textContent = "Sending…";
 
-      fetch(form.action, {
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      fetch(ajaxAction, {
         method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       })
-        .then((res) => {
-          if (!res.ok) throw new Error("Request failed");
+        .then((res) => res.json().catch(() => ({})).then((data) => ({ ok: res.ok, data })))
+        .then(({ ok, data }) => {
+          const activationNeeded =
+            data && typeof data.message === "string" &&
+            /activate|confirm/i.test(data.message);
+
+          if (!ok || data.success === "false" || activationNeeded) {
+            throw new Error(activationNeeded ? "activation" : "failed");
+          }
           if (success) success.classList.add("show");
           form.reset();
         })
-        .catch(() => {
+        .catch((err) => {
           if (note) {
             note.textContent =
-              "Something went wrong sending that — try again, or email kyle@kylealexanderwrites.com directly.";
+              err.message === "activation"
+                ? "Almost — FormSubmit needs one-time activation. Check kyle@kylealexanderwrites.com (and spam) for a confirmation email, click it, then try again."
+                : "Something went wrong sending that — try again, or email kyle@kylealexanderwrites.com directly.";
           }
         })
         .finally(() => {
